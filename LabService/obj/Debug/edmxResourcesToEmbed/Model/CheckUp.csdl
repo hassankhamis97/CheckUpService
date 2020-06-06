@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CheckUpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CheckUpEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="CheckUpModel.Address" />
+    <EntitySet Name="Governs" EntityType="CheckUpModel.Govern" />
+    <EntitySet Name="Phones" EntityType="CheckUpModel.Phone" />
+    <EntitySet Name="DieaseNames" EntityType="CheckUpModel.DieaseName" />
+    <EntitySet Name="HealthProfiles" EntityType="CheckUpModel.HealthProfile" />
+    <EntitySet Name="LabBranches" EntityType="CheckUpModel.LabBranch" />
+    <EntitySet Name="Laboratories" EntityType="CheckUpModel.Laboratory" />
+    <EntitySet Name="ResultFilespaths" EntityType="CheckUpModel.ResultFilespath" />
+    <EntitySet Name="Reviews" EntityType="CheckUpModel.Review" />
+    <EntitySet Name="RoushettaPaths" EntityType="CheckUpModel.RoushettaPath" />
+    <EntitySet Name="Tests" EntityType="CheckUpModel.Test" />
+    <EntitySet Name="TestNames" EntityType="CheckUpModel.TestName" />
+    <AssociationSet Name="FK_LabBranch_Address" Association="CheckUpModel.FK_LabBranch_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="LabBranch" EntitySet="LabBranches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_Address" Association="CheckUpModel.FK_Test_Address">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Test" EntitySet="Tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LabBranch_Govern" Association="CheckUpModel.FK_LabBranch_Govern">
+      <End Role="Govern" EntitySet="Governs" />
+      <End Role="LabBranch" EntitySet="LabBranches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DieaseName_HealthProfile" Association="CheckUpModel.FK_DieaseName_HealthProfile">
+      <End Role="HealthProfile" EntitySet="HealthProfiles" />
+      <End Role="DieaseName" EntitySet="DieaseNames" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LabBranch_Laboratory" Association="CheckUpModel.FK_LabBranch_Laboratory">
+      <End Role="Laboratory" EntitySet="Laboratories" />
+      <End Role="LabBranch" EntitySet="LabBranches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Review" Association="CheckUpModel.FK_Review_Review">
+      <End Role="LabBranch" EntitySet="LabBranches" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_Laboratory" Association="CheckUpModel.FK_Test_Laboratory">
+      <End Role="Laboratory" EntitySet="Laboratories" />
+      <End Role="Test" EntitySet="Tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResultFilespath_Test" Association="CheckUpModel.FK_ResultFilespath_Test">
+      <End Role="Test" EntitySet="Tests" />
+      <End Role="ResultFilespath" EntitySet="ResultFilespaths" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoushettaPath_Test" Association="CheckUpModel.FK_RoushettaPath_Test">
+      <End Role="Test" EntitySet="Tests" />
+      <End Role="RoushettaPath" EntitySet="RoushettaPaths" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestName_Test" Association="CheckUpModel.FK_TestName_Test">
+      <End Role="Test" EntitySet="Tests" />
+      <End Role="TestName" EntitySet="TestNames" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="buildingNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="floorNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="apartmentNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="longitude" Type="Double" />
+    <Property Name="latitude" Type="Double" />
+    <NavigationProperty Name="LabBranches" Relationship="CheckUpModel.FK_LabBranch_Address" FromRole="Address" ToRole="LabBranch" />
+    <NavigationProperty Name="Tests" Relationship="CheckUpModel.FK_Test_Address" FromRole="Address" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="Govern">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LabBranches" Relationship="CheckUpModel.FK_LabBranch_Govern" FromRole="Govern" ToRole="LabBranch" />
+  </EntityType>
+  <EntityType Name="Phone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isLand" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="DieaseName">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HealthProfileId" Type="Int64" />
+    <NavigationProperty Name="HealthProfile" Relationship="CheckUpModel.FK_DieaseName_HealthProfile" FromRole="DieaseName" ToRole="HealthProfile" />
+  </EntityType>
+  <EntityType Name="HealthProfile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="isSuffreDiabetes" Type="Boolean" />
+    <Property Name="isSuffrePressure" Type="Boolean" />
+    <Property Name="isSTakeantiBiotic" Type="Boolean" />
+    <Property Name="isTakehaemophilia" Type="Boolean" />
+    <Property Name="userId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DieaseNames" Relationship="CheckUpModel.FK_DieaseName_HealthProfile" FromRole="HealthProfile" ToRole="DieaseName" />
+  </EntityType>
+  <EntityType Name="LabBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="govern" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isAvailableFromHome" Type="Boolean" />
+    <Property Name="timeFrom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="timeTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="holidays" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="longitude" Type="Double" />
+    <Property Name="latitude" Type="Double" />
+    <Property Name="FireBaseId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LabId" Type="Int64" />
+    <Property Name="addressId" Type="Int64" />
+    <Property Name="rating" Type="Int32" />
+    <Property Name="reviewId" Type="Int64" />
+    <Property Name="governId" Type="Int64" />
+    <NavigationProperty Name="Address" Relationship="CheckUpModel.FK_LabBranch_Address" FromRole="LabBranch" ToRole="Address" />
+    <NavigationProperty Name="Govern1" Relationship="CheckUpModel.FK_LabBranch_Govern" FromRole="LabBranch" ToRole="Govern" />
+    <NavigationProperty Name="Laboratory" Relationship="CheckUpModel.FK_LabBranch_Laboratory" FromRole="LabBranch" ToRole="Laboratory" />
+    <NavigationProperty Name="Reviews" Relationship="CheckUpModel.FK_Review_Review" FromRole="LabBranch" ToRole="Review" />
+  </EntityType>
+  <EntityType Name="Laboratory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="formalReferencePathId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="formalRefrencePathIdDB" Type="Int64" />
+    <Property Name="specialTests" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="branches" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FireBaseId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hotline" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rating" Type="Int32" />
+    <NavigationProperty Name="LabBranches" Relationship="CheckUpModel.FK_LabBranch_Laboratory" FromRole="Laboratory" ToRole="LabBranch" />
+    <NavigationProperty Name="Tests" Relationship="CheckUpModel.FK_Test_Laboratory" FromRole="Laboratory" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="ResultFilespath">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TestId" Type="Int64" />
+    <NavigationProperty Name="Test" Relationship="CheckUpModel.FK_ResultFilespath_Test" FromRole="ResultFilespath" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rateNumber" Type="Int32" />
+    <Property Name="userId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserIdDB" Type="Int64" />
+    <Property Name="LabBranchId" Type="Int64" />
+    <Property Name="createdDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="LabBranch" Relationship="CheckUpModel.FK_Review_Review" FromRole="Review" ToRole="LabBranch" />
+  </EntityType>
+  <EntityType Name="RoushettaPath">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TestId" Type="Int64" />
+    <NavigationProperty Name="Test" Relationship="CheckUpModel.FK_RoushettaPath_Test" FromRole="RoushettaPath" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="userIdDB" Type="Int64" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isFromHome" Type="Boolean" />
+    <Property Name="dateRequest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="timeRequest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dateForTakingSample" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="timeForTakingSample" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dateResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="timeResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="branchId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="branchIdDB" Type="Int64" />
+    <Property Name="labId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="labIdDB" Type="Int64" />
+    <Property Name="addressId" Type="Int64" />
+    <Property Name="hba1c" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isNotified" Type="Boolean" />
+    <Property Name="totalCost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="precautions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="employeeId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="radioReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="generatedCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="timeStampRequest" Type="Int64" />
+    <Property Name="refuseReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dateRequestFormat" Type="DateTime" Precision="3" />
+    <Property Name="isNotifiedLab" Type="Boolean" />
+    <NavigationProperty Name="Address" Relationship="CheckUpModel.FK_Test_Address" FromRole="Test" ToRole="Address" />
+    <NavigationProperty Name="Laboratory" Relationship="CheckUpModel.FK_Test_Laboratory" FromRole="Test" ToRole="Laboratory" />
+    <NavigationProperty Name="ResultFilespaths" Relationship="CheckUpModel.FK_ResultFilespath_Test" FromRole="Test" ToRole="ResultFilespath" />
+    <NavigationProperty Name="RoushettaPaths" Relationship="CheckUpModel.FK_RoushettaPath_Test" FromRole="Test" ToRole="RoushettaPath" />
+    <NavigationProperty Name="TestNames" Relationship="CheckUpModel.FK_TestName_Test" FromRole="Test" ToRole="TestName" />
+  </EntityType>
+  <EntityType Name="TestName">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TestId" Type="Int64" />
+    <NavigationProperty Name="Test" Relationship="CheckUpModel.FK_TestName_Test" FromRole="TestName" ToRole="Test" />
+  </EntityType>
+  <Association Name="FK_LabBranch_Address">
+    <End Type="CheckUpModel.Address" Role="Address" Multiplicity="0..1" />
+    <End Type="CheckUpModel.LabBranch" Role="LabBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LabBranch">
+        <PropertyRef Name="addressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_Address">
+    <End Type="CheckUpModel.Address" Role="Address" Multiplicity="0..1" />
+    <End Type="CheckUpModel.Test" Role="Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="addressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LabBranch_Govern">
+    <End Type="CheckUpModel.Govern" Role="Govern" Multiplicity="0..1" />
+    <End Type="CheckUpModel.LabBranch" Role="LabBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Govern">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LabBranch">
+        <PropertyRef Name="governId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DieaseName_HealthProfile">
+    <End Type="CheckUpModel.HealthProfile" Role="HealthProfile" Multiplicity="0..1" />
+    <End Type="CheckUpModel.DieaseName" Role="DieaseName" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthProfile">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DieaseName">
+        <PropertyRef Name="HealthProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LabBranch_Laboratory">
+    <End Type="CheckUpModel.Laboratory" Role="Laboratory" Multiplicity="0..1" />
+    <End Type="CheckUpModel.LabBranch" Role="LabBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Laboratory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LabBranch">
+        <PropertyRef Name="LabId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Review">
+    <End Type="CheckUpModel.LabBranch" Role="LabBranch" Multiplicity="0..1" />
+    <End Type="CheckUpModel.Review" Role="Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LabBranch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="LabBranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_Laboratory">
+    <End Type="CheckUpModel.Laboratory" Role="Laboratory" Multiplicity="0..1" />
+    <End Type="CheckUpModel.Test" Role="Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Laboratory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="labIdDB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResultFilespath_Test">
+    <End Type="CheckUpModel.Test" Role="Test" Multiplicity="0..1" />
+    <End Type="CheckUpModel.ResultFilespath" Role="ResultFilespath" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ResultFilespath">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoushettaPath_Test">
+    <End Type="CheckUpModel.Test" Role="Test" Multiplicity="0..1" />
+    <End Type="CheckUpModel.RoushettaPath" Role="RoushettaPath" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoushettaPath">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestName_Test">
+    <End Type="CheckUpModel.Test" Role="Test" Multiplicity="0..1" />
+    <End Type="CheckUpModel.TestName" Role="TestName" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TestName">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

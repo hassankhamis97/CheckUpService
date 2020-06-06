@@ -1,0 +1,883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CheckUpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="buildingNo" Type="nvarchar(max)" />
+          <Property Name="floorNo" Type="nvarchar(max)" />
+          <Property Name="apartmentNo" Type="nvarchar(max)" />
+          <Property Name="longitude" Type="float" />
+          <Property Name="latitude" Type="float" />
+        </EntityType>
+        <EntityType Name="Govern">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="number" Type="nvarchar(max)" />
+          <Property Name="isLand" Type="bit" />
+        </EntityType>
+        <EntityType Name="DieaseName">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="HealthProfileId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="HealthProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isSuffreDiabetes" Type="bit" />
+          <Property Name="isSuffrePressure" Type="bit" />
+          <Property Name="isSTakeantiBiotic" Type="bit" />
+          <Property Name="isTakehaemophilia" Type="bit" />
+          <Property Name="userId" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LabBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="govern" Type="nvarchar(max)" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="phone" Type="nvarchar(max)" />
+          <Property Name="isAvailableFromHome" Type="bit" />
+          <Property Name="timeFrom" Type="nvarchar(max)" />
+          <Property Name="timeTo" Type="nvarchar(max)" />
+          <Property Name="holidays" Type="nvarchar(max)" />
+          <Property Name="longitude" Type="float" />
+          <Property Name="latitude" Type="float" />
+          <Property Name="FireBaseId" Type="nvarchar(max)" />
+          <Property Name="LabId" Type="bigint" />
+          <Property Name="addressId" Type="bigint" />
+          <Property Name="rating" Type="int" />
+          <Property Name="reviewId" Type="bigint" />
+          <Property Name="governId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Laboratory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="formalReferencePathId" Type="nvarchar(max)" />
+          <Property Name="formalRefrencePathIdDB" Type="bigint" />
+          <Property Name="specialTests" Type="nvarchar(max)" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="branches" Type="nvarchar(max)" />
+          <Property Name="FireBaseId" Type="nvarchar(max)" />
+          <Property Name="hotline" Type="nvarchar(max)" />
+          <Property Name="rating" Type="int" />
+        </EntityType>
+        <EntityType Name="ResultFilespath">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="TestId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="rateNumber" Type="int" />
+          <Property Name="userId" Type="nvarchar(max)" />
+          <Property Name="UserIdDB" Type="bigint" />
+          <Property Name="LabBranchId" Type="bigint" />
+          <Property Name="createdDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RoushettaPath">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="TestId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="nvarchar(max)" />
+          <Property Name="userIdDB" Type="bigint" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="isFromHome" Type="bit" />
+          <Property Name="dateRequest" Type="nvarchar(max)" />
+          <Property Name="timeRequest" Type="nvarchar(max)" />
+          <Property Name="dateForTakingSample" Type="nvarchar(max)" />
+          <Property Name="timeForTakingSample" Type="nvarchar(max)" />
+          <Property Name="dateResult" Type="nvarchar(max)" />
+          <Property Name="timeResult" Type="nvarchar(max)" />
+          <Property Name="branchId" Type="nvarchar(max)" />
+          <Property Name="branchIdDB" Type="bigint" />
+          <Property Name="labId" Type="nvarchar(max)" />
+          <Property Name="labIdDB" Type="bigint" />
+          <Property Name="addressId" Type="bigint" />
+          <Property Name="hba1c" Type="nvarchar(max)" />
+          <Property Name="status" Type="nvarchar(max)" />
+          <Property Name="isNotified" Type="bit" />
+          <Property Name="totalCost" Type="nvarchar(max)" />
+          <Property Name="precautions" Type="nvarchar(max)" />
+          <Property Name="employeeId" Type="nvarchar(max)" />
+          <Property Name="radioReason" Type="nvarchar(max)" />
+          <Property Name="generatedCode" Type="nvarchar(max)" />
+          <Property Name="timeStampRequest" Type="bigint" />
+          <Property Name="refuseReason" Type="nvarchar(max)" />
+          <Property Name="dateRequestFormat" Type="datetime" />
+          <Property Name="isNotifiedLab" Type="bit" />
+        </EntityType>
+        <EntityType Name="TestName">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="TestId" Type="bigint" />
+        </EntityType>
+        <Association Name="FK_DieaseName_HealthProfile">
+          <End Role="HealthProfile" Type="Self.HealthProfile" Multiplicity="0..1" />
+          <End Role="DieaseName" Type="Self.DieaseName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HealthProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DieaseName">
+              <PropertyRef Name="HealthProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LabBranch_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="LabBranch" Type="Self.LabBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LabBranch">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LabBranch_Govern">
+          <End Role="Govern" Type="Self.Govern" Multiplicity="0..1" />
+          <End Role="LabBranch" Type="Self.LabBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Govern">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LabBranch">
+              <PropertyRef Name="governId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LabBranch_Laboratory">
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="0..1" />
+          <End Role="LabBranch" Type="Self.LabBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laboratory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LabBranch">
+              <PropertyRef Name="LabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultFilespath_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="ResultFilespath" Type="Self.ResultFilespath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ResultFilespath">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Review">
+          <End Role="LabBranch" Type="Self.LabBranch" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LabBranch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="LabBranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoushettaPath_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="RoushettaPath" Type="Self.RoushettaPath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoushettaPath">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Laboratory">
+          <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laboratory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="labIdDB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestName_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="TestName" Type="Self.TestName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestName">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CheckUpModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Govern" EntityType="Self.Govern" Schema="General" store:Type="Tables" />
+          <EntitySet Name="Phone" EntityType="Self.Phone" Schema="General" store:Type="Tables" />
+          <EntitySet Name="DieaseName" EntityType="Self.DieaseName" Schema="lab" store:Type="Tables" />
+          <EntitySet Name="HealthProfile" EntityType="Self.HealthProfile" Schema="lab" store:Type="Tables" />
+          <EntitySet Name="LabBranch" EntityType="Self.LabBranch" Schema="lab" store:Type="Tables" />
+          <EntitySet Name="Laboratory" EntityType="Self.Laboratory" Schema="lab" store:Type="Tables" />
+          <EntitySet Name="ResultFilespath" EntityType="Self.ResultFilespath" Schema="lab" store:Type="Tables" />
+          <EntitySet Name="Review" EntityType="Self.Review" Schema="lab" store:Type="Tables" />
+          <EntitySet Name="RoushettaPath" EntityType="Self.RoushettaPath" Schema="lab" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="lab" store:Type="Tables" />
+          <EntitySet Name="TestName" EntityType="Self.TestName" Schema="lab" store:Type="Tables" />
+          <AssociationSet Name="FK_DieaseName_HealthProfile" Association="Self.FK_DieaseName_HealthProfile">
+            <End Role="HealthProfile" EntitySet="HealthProfile" />
+            <End Role="DieaseName" EntitySet="DieaseName" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LabBranch_Address" Association="Self.FK_LabBranch_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="LabBranch" EntitySet="LabBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LabBranch_Govern" Association="Self.FK_LabBranch_Govern">
+            <End Role="Govern" EntitySet="Govern" />
+            <End Role="LabBranch" EntitySet="LabBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LabBranch_Laboratory" Association="Self.FK_LabBranch_Laboratory">
+            <End Role="Laboratory" EntitySet="Laboratory" />
+            <End Role="LabBranch" EntitySet="LabBranch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultFilespath_Test" Association="Self.FK_ResultFilespath_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="ResultFilespath" EntitySet="ResultFilespath" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Review" Association="Self.FK_Review_Review">
+            <End Role="LabBranch" EntitySet="LabBranch" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoushettaPath_Test" Association="Self.FK_RoushettaPath_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="RoushettaPath" EntitySet="RoushettaPath" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Address" Association="Self.FK_Test_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Laboratory" Association="Self.FK_Test_Laboratory">
+            <End Role="Laboratory" EntitySet="Laboratory" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestName_Test" Association="Self.FK_TestName_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="TestName" EntitySet="TestName" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CheckUpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CheckUpEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="CheckUpModel.Address" />
+          <EntitySet Name="Governs" EntityType="CheckUpModel.Govern" />
+          <EntitySet Name="Phones" EntityType="CheckUpModel.Phone" />
+          <EntitySet Name="DieaseNames" EntityType="CheckUpModel.DieaseName" />
+          <EntitySet Name="HealthProfiles" EntityType="CheckUpModel.HealthProfile" />
+          <EntitySet Name="LabBranches" EntityType="CheckUpModel.LabBranch" />
+          <EntitySet Name="Laboratories" EntityType="CheckUpModel.Laboratory" />
+          <EntitySet Name="ResultFilespaths" EntityType="CheckUpModel.ResultFilespath" />
+          <EntitySet Name="Reviews" EntityType="CheckUpModel.Review" />
+          <EntitySet Name="RoushettaPaths" EntityType="CheckUpModel.RoushettaPath" />
+          <EntitySet Name="Tests" EntityType="CheckUpModel.Test" />
+          <EntitySet Name="TestNames" EntityType="CheckUpModel.TestName" />
+          <AssociationSet Name="FK_LabBranch_Address" Association="CheckUpModel.FK_LabBranch_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="LabBranch" EntitySet="LabBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Address" Association="CheckUpModel.FK_Test_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LabBranch_Govern" Association="CheckUpModel.FK_LabBranch_Govern">
+            <End Role="Govern" EntitySet="Governs" />
+            <End Role="LabBranch" EntitySet="LabBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DieaseName_HealthProfile" Association="CheckUpModel.FK_DieaseName_HealthProfile">
+            <End Role="HealthProfile" EntitySet="HealthProfiles" />
+            <End Role="DieaseName" EntitySet="DieaseNames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LabBranch_Laboratory" Association="CheckUpModel.FK_LabBranch_Laboratory">
+            <End Role="Laboratory" EntitySet="Laboratories" />
+            <End Role="LabBranch" EntitySet="LabBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Review" Association="CheckUpModel.FK_Review_Review">
+            <End Role="LabBranch" EntitySet="LabBranches" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Laboratory" Association="CheckUpModel.FK_Test_Laboratory">
+            <End Role="Laboratory" EntitySet="Laboratories" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResultFilespath_Test" Association="CheckUpModel.FK_ResultFilespath_Test">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="ResultFilespath" EntitySet="ResultFilespaths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoushettaPath_Test" Association="CheckUpModel.FK_RoushettaPath_Test">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="RoushettaPath" EntitySet="RoushettaPaths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestName_Test" Association="CheckUpModel.FK_TestName_Test">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="TestName" EntitySet="TestNames" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="buildingNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="floorNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="apartmentNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="longitude" Type="Double" />
+          <Property Name="latitude" Type="Double" />
+          <NavigationProperty Name="LabBranches" Relationship="CheckUpModel.FK_LabBranch_Address" FromRole="Address" ToRole="LabBranch" />
+          <NavigationProperty Name="Tests" Relationship="CheckUpModel.FK_Test_Address" FromRole="Address" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Govern">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LabBranches" Relationship="CheckUpModel.FK_LabBranch_Govern" FromRole="Govern" ToRole="LabBranch" />
+        </EntityType>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isLand" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="DieaseName">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HealthProfileId" Type="Int64" />
+          <NavigationProperty Name="HealthProfile" Relationship="CheckUpModel.FK_DieaseName_HealthProfile" FromRole="DieaseName" ToRole="HealthProfile" />
+        </EntityType>
+        <EntityType Name="HealthProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="isSuffreDiabetes" Type="Boolean" />
+          <Property Name="isSuffrePressure" Type="Boolean" />
+          <Property Name="isSTakeantiBiotic" Type="Boolean" />
+          <Property Name="isTakehaemophilia" Type="Boolean" />
+          <Property Name="userId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DieaseNames" Relationship="CheckUpModel.FK_DieaseName_HealthProfile" FromRole="HealthProfile" ToRole="DieaseName" />
+        </EntityType>
+        <EntityType Name="LabBranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="govern" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isAvailableFromHome" Type="Boolean" />
+          <Property Name="timeFrom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="timeTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="holidays" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="longitude" Type="Double" />
+          <Property Name="latitude" Type="Double" />
+          <Property Name="FireBaseId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LabId" Type="Int64" />
+          <Property Name="addressId" Type="Int64" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="reviewId" Type="Int64" />
+          <Property Name="governId" Type="Int64" />
+          <NavigationProperty Name="Address" Relationship="CheckUpModel.FK_LabBranch_Address" FromRole="LabBranch" ToRole="Address" />
+          <NavigationProperty Name="Govern1" Relationship="CheckUpModel.FK_LabBranch_Govern" FromRole="LabBranch" ToRole="Govern" />
+          <NavigationProperty Name="Laboratory" Relationship="CheckUpModel.FK_LabBranch_Laboratory" FromRole="LabBranch" ToRole="Laboratory" />
+          <NavigationProperty Name="Reviews" Relationship="CheckUpModel.FK_Review_Review" FromRole="LabBranch" ToRole="Review" />
+        </EntityType>
+        <EntityType Name="Laboratory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="formalReferencePathId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="formalRefrencePathIdDB" Type="Int64" />
+          <Property Name="specialTests" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="branches" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FireBaseId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hotline" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rating" Type="Int32" />
+          <NavigationProperty Name="LabBranches" Relationship="CheckUpModel.FK_LabBranch_Laboratory" FromRole="Laboratory" ToRole="LabBranch" />
+          <NavigationProperty Name="Tests" Relationship="CheckUpModel.FK_Test_Laboratory" FromRole="Laboratory" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="ResultFilespath">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TestId" Type="Int64" />
+          <NavigationProperty Name="Test" Relationship="CheckUpModel.FK_ResultFilespath_Test" FromRole="ResultFilespath" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rateNumber" Type="Int32" />
+          <Property Name="userId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserIdDB" Type="Int64" />
+          <Property Name="LabBranchId" Type="Int64" />
+          <Property Name="createdDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="LabBranch" Relationship="CheckUpModel.FK_Review_Review" FromRole="Review" ToRole="LabBranch" />
+        </EntityType>
+        <EntityType Name="RoushettaPath">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TestId" Type="Int64" />
+          <NavigationProperty Name="Test" Relationship="CheckUpModel.FK_RoushettaPath_Test" FromRole="RoushettaPath" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="userIdDB" Type="Int64" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isFromHome" Type="Boolean" />
+          <Property Name="dateRequest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="timeRequest" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateForTakingSample" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="timeForTakingSample" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="timeResult" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="branchId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="branchIdDB" Type="Int64" />
+          <Property Name="labId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="labIdDB" Type="Int64" />
+          <Property Name="addressId" Type="Int64" />
+          <Property Name="hba1c" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isNotified" Type="Boolean" />
+          <Property Name="totalCost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="precautions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="employeeId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="radioReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="generatedCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="timeStampRequest" Type="Int64" />
+          <Property Name="refuseReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateRequestFormat" Type="DateTime" Precision="3" />
+          <Property Name="isNotifiedLab" Type="Boolean" />
+          <NavigationProperty Name="Address" Relationship="CheckUpModel.FK_Test_Address" FromRole="Test" ToRole="Address" />
+          <NavigationProperty Name="Laboratory" Relationship="CheckUpModel.FK_Test_Laboratory" FromRole="Test" ToRole="Laboratory" />
+          <NavigationProperty Name="ResultFilespaths" Relationship="CheckUpModel.FK_ResultFilespath_Test" FromRole="Test" ToRole="ResultFilespath" />
+          <NavigationProperty Name="RoushettaPaths" Relationship="CheckUpModel.FK_RoushettaPath_Test" FromRole="Test" ToRole="RoushettaPath" />
+          <NavigationProperty Name="TestNames" Relationship="CheckUpModel.FK_TestName_Test" FromRole="Test" ToRole="TestName" />
+        </EntityType>
+        <EntityType Name="TestName">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TestId" Type="Int64" />
+          <NavigationProperty Name="Test" Relationship="CheckUpModel.FK_TestName_Test" FromRole="TestName" ToRole="Test" />
+        </EntityType>
+        <Association Name="FK_LabBranch_Address">
+          <End Type="CheckUpModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="CheckUpModel.LabBranch" Role="LabBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LabBranch">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Address">
+          <End Type="CheckUpModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="CheckUpModel.Test" Role="Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LabBranch_Govern">
+          <End Type="CheckUpModel.Govern" Role="Govern" Multiplicity="0..1" />
+          <End Type="CheckUpModel.LabBranch" Role="LabBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Govern">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LabBranch">
+              <PropertyRef Name="governId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DieaseName_HealthProfile">
+          <End Type="CheckUpModel.HealthProfile" Role="HealthProfile" Multiplicity="0..1" />
+          <End Type="CheckUpModel.DieaseName" Role="DieaseName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HealthProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DieaseName">
+              <PropertyRef Name="HealthProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LabBranch_Laboratory">
+          <End Type="CheckUpModel.Laboratory" Role="Laboratory" Multiplicity="0..1" />
+          <End Type="CheckUpModel.LabBranch" Role="LabBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laboratory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LabBranch">
+              <PropertyRef Name="LabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Review">
+          <End Type="CheckUpModel.LabBranch" Role="LabBranch" Multiplicity="0..1" />
+          <End Type="CheckUpModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LabBranch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="LabBranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Laboratory">
+          <End Type="CheckUpModel.Laboratory" Role="Laboratory" Multiplicity="0..1" />
+          <End Type="CheckUpModel.Test" Role="Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Laboratory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="labIdDB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResultFilespath_Test">
+          <End Type="CheckUpModel.Test" Role="Test" Multiplicity="0..1" />
+          <End Type="CheckUpModel.ResultFilespath" Role="ResultFilespath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ResultFilespath">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoushettaPath_Test">
+          <End Type="CheckUpModel.Test" Role="Test" Multiplicity="0..1" />
+          <End Type="CheckUpModel.RoushettaPath" Role="RoushettaPath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoushettaPath">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestName_Test">
+          <End Type="CheckUpModel.Test" Role="Test" Multiplicity="0..1" />
+          <End Type="CheckUpModel.TestName" Role="TestName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestName">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CheckUpModelStoreContainer" CdmEntityContainer="CheckUpEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="CheckUpModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="apartmentNo" ColumnName="apartmentNo" />
+                <ScalarProperty Name="floorNo" ColumnName="floorNo" />
+                <ScalarProperty Name="buildingNo" ColumnName="buildingNo" />
+                <ScalarProperty Name="address1" ColumnName="address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Governs">
+            <EntityTypeMapping TypeName="CheckUpModel.Govern">
+              <MappingFragment StoreEntitySet="Govern">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phones">
+            <EntityTypeMapping TypeName="CheckUpModel.Phone">
+              <MappingFragment StoreEntitySet="Phone">
+                <ScalarProperty Name="isLand" ColumnName="isLand" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DieaseNames">
+            <EntityTypeMapping TypeName="CheckUpModel.DieaseName">
+              <MappingFragment StoreEntitySet="DieaseName">
+                <ScalarProperty Name="HealthProfileId" ColumnName="HealthProfileId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HealthProfiles">
+            <EntityTypeMapping TypeName="CheckUpModel.HealthProfile">
+              <MappingFragment StoreEntitySet="HealthProfile">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="isTakehaemophilia" ColumnName="isTakehaemophilia" />
+                <ScalarProperty Name="isSTakeantiBiotic" ColumnName="isSTakeantiBiotic" />
+                <ScalarProperty Name="isSuffrePressure" ColumnName="isSuffrePressure" />
+                <ScalarProperty Name="isSuffreDiabetes" ColumnName="isSuffreDiabetes" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LabBranches">
+            <EntityTypeMapping TypeName="CheckUpModel.LabBranch">
+              <MappingFragment StoreEntitySet="LabBranch">
+                <ScalarProperty Name="governId" ColumnName="governId" />
+                <ScalarProperty Name="reviewId" ColumnName="reviewId" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="addressId" ColumnName="addressId" />
+                <ScalarProperty Name="LabId" ColumnName="LabId" />
+                <ScalarProperty Name="FireBaseId" ColumnName="FireBaseId" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="holidays" ColumnName="holidays" />
+                <ScalarProperty Name="timeTo" ColumnName="timeTo" />
+                <ScalarProperty Name="timeFrom" ColumnName="timeFrom" />
+                <ScalarProperty Name="isAvailableFromHome" ColumnName="isAvailableFromHome" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="govern" ColumnName="govern" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Laboratories">
+            <EntityTypeMapping TypeName="CheckUpModel.Laboratory">
+              <MappingFragment StoreEntitySet="Laboratory">
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="hotline" ColumnName="hotline" />
+                <ScalarProperty Name="FireBaseId" ColumnName="FireBaseId" />
+                <ScalarProperty Name="branches" ColumnName="branches" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="specialTests" ColumnName="specialTests" />
+                <ScalarProperty Name="formalRefrencePathIdDB" ColumnName="formalRefrencePathIdDB" />
+                <ScalarProperty Name="formalReferencePathId" ColumnName="formalReferencePathId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResultFilespaths">
+            <EntityTypeMapping TypeName="CheckUpModel.ResultFilespath">
+              <MappingFragment StoreEntitySet="ResultFilespath">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="CheckUpModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+                <ScalarProperty Name="LabBranchId" ColumnName="LabBranchId" />
+                <ScalarProperty Name="UserIdDB" ColumnName="UserIdDB" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="rateNumber" ColumnName="rateNumber" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoushettaPaths">
+            <EntityTypeMapping TypeName="CheckUpModel.RoushettaPath">
+              <MappingFragment StoreEntitySet="RoushettaPath">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="CheckUpModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="isNotifiedLab" ColumnName="isNotifiedLab" />
+                <ScalarProperty Name="dateRequestFormat" ColumnName="dateRequestFormat" />
+                <ScalarProperty Name="refuseReason" ColumnName="refuseReason" />
+                <ScalarProperty Name="timeStampRequest" ColumnName="timeStampRequest" />
+                <ScalarProperty Name="generatedCode" ColumnName="generatedCode" />
+                <ScalarProperty Name="radioReason" ColumnName="radioReason" />
+                <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+                <ScalarProperty Name="precautions" ColumnName="precautions" />
+                <ScalarProperty Name="totalCost" ColumnName="totalCost" />
+                <ScalarProperty Name="isNotified" ColumnName="isNotified" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="hba1c" ColumnName="hba1c" />
+                <ScalarProperty Name="addressId" ColumnName="addressId" />
+                <ScalarProperty Name="labIdDB" ColumnName="labIdDB" />
+                <ScalarProperty Name="labId" ColumnName="labId" />
+                <ScalarProperty Name="branchIdDB" ColumnName="branchIdDB" />
+                <ScalarProperty Name="branchId" ColumnName="branchId" />
+                <ScalarProperty Name="timeResult" ColumnName="timeResult" />
+                <ScalarProperty Name="dateResult" ColumnName="dateResult" />
+                <ScalarProperty Name="timeForTakingSample" ColumnName="timeForTakingSample" />
+                <ScalarProperty Name="dateForTakingSample" ColumnName="dateForTakingSample" />
+                <ScalarProperty Name="timeRequest" ColumnName="timeRequest" />
+                <ScalarProperty Name="dateRequest" ColumnName="dateRequest" />
+                <ScalarProperty Name="isFromHome" ColumnName="isFromHome" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="userIdDB" ColumnName="userIdDB" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestNames">
+            <EntityTypeMapping TypeName="CheckUpModel.TestName">
+              <MappingFragment StoreEntitySet="TestName">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

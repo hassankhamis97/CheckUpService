@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CheckUpModelStoreContainer" CdmEntityContainer="CheckUpEntities">
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="CheckUpModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="apartmentNo" ColumnName="apartmentNo" />
+          <ScalarProperty Name="floorNo" ColumnName="floorNo" />
+          <ScalarProperty Name="buildingNo" ColumnName="buildingNo" />
+          <ScalarProperty Name="address1" ColumnName="address" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Governs">
+      <EntityTypeMapping TypeName="CheckUpModel.Govern">
+        <MappingFragment StoreEntitySet="Govern">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phones">
+      <EntityTypeMapping TypeName="CheckUpModel.Phone">
+        <MappingFragment StoreEntitySet="Phone">
+          <ScalarProperty Name="isLand" ColumnName="isLand" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DieaseNames">
+      <EntityTypeMapping TypeName="CheckUpModel.DieaseName">
+        <MappingFragment StoreEntitySet="DieaseName">
+          <ScalarProperty Name="HealthProfileId" ColumnName="HealthProfileId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HealthProfiles">
+      <EntityTypeMapping TypeName="CheckUpModel.HealthProfile">
+        <MappingFragment StoreEntitySet="HealthProfile">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="isTakehaemophilia" ColumnName="isTakehaemophilia" />
+          <ScalarProperty Name="isSTakeantiBiotic" ColumnName="isSTakeantiBiotic" />
+          <ScalarProperty Name="isSuffrePressure" ColumnName="isSuffrePressure" />
+          <ScalarProperty Name="isSuffreDiabetes" ColumnName="isSuffreDiabetes" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LabBranches">
+      <EntityTypeMapping TypeName="CheckUpModel.LabBranch">
+        <MappingFragment StoreEntitySet="LabBranch">
+          <ScalarProperty Name="governId" ColumnName="governId" />
+          <ScalarProperty Name="reviewId" ColumnName="reviewId" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="addressId" ColumnName="addressId" />
+          <ScalarProperty Name="LabId" ColumnName="LabId" />
+          <ScalarProperty Name="FireBaseId" ColumnName="FireBaseId" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="holidays" ColumnName="holidays" />
+          <ScalarProperty Name="timeTo" ColumnName="timeTo" />
+          <ScalarProperty Name="timeFrom" ColumnName="timeFrom" />
+          <ScalarProperty Name="isAvailableFromHome" ColumnName="isAvailableFromHome" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="govern" ColumnName="govern" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Laboratories">
+      <EntityTypeMapping TypeName="CheckUpModel.Laboratory">
+        <MappingFragment StoreEntitySet="Laboratory">
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="hotline" ColumnName="hotline" />
+          <ScalarProperty Name="FireBaseId" ColumnName="FireBaseId" />
+          <ScalarProperty Name="branches" ColumnName="branches" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="specialTests" ColumnName="specialTests" />
+          <ScalarProperty Name="formalRefrencePathIdDB" ColumnName="formalRefrencePathIdDB" />
+          <ScalarProperty Name="formalReferencePathId" ColumnName="formalReferencePathId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResultFilespaths">
+      <EntityTypeMapping TypeName="CheckUpModel.ResultFilespath">
+        <MappingFragment StoreEntitySet="ResultFilespath">
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="CheckUpModel.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="createdDate" ColumnName="createdDate" />
+          <ScalarProperty Name="LabBranchId" ColumnName="LabBranchId" />
+          <ScalarProperty Name="UserIdDB" ColumnName="UserIdDB" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="rateNumber" ColumnName="rateNumber" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoushettaPaths">
+      <EntityTypeMapping TypeName="CheckUpModel.RoushettaPath">
+        <MappingFragment StoreEntitySet="RoushettaPath">
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tests">
+      <EntityTypeMapping TypeName="CheckUpModel.Test">
+        <MappingFragment StoreEntitySet="Test">
+          <ScalarProperty Name="isNotifiedLab" ColumnName="isNotifiedLab" />
+          <ScalarProperty Name="dateRequestFormat" ColumnName="dateRequestFormat" />
+          <ScalarProperty Name="refuseReason" ColumnName="refuseReason" />
+          <ScalarProperty Name="timeStampRequest" ColumnName="timeStampRequest" />
+          <ScalarProperty Name="generatedCode" ColumnName="generatedCode" />
+          <ScalarProperty Name="radioReason" ColumnName="radioReason" />
+          <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+          <ScalarProperty Name="precautions" ColumnName="precautions" />
+          <ScalarProperty Name="totalCost" ColumnName="totalCost" />
+          <ScalarProperty Name="isNotified" ColumnName="isNotified" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="hba1c" ColumnName="hba1c" />
+          <ScalarProperty Name="addressId" ColumnName="addressId" />
+          <ScalarProperty Name="labIdDB" ColumnName="labIdDB" />
+          <ScalarProperty Name="labId" ColumnName="labId" />
+          <ScalarProperty Name="branchIdDB" ColumnName="branchIdDB" />
+          <ScalarProperty Name="branchId" ColumnName="branchId" />
+          <ScalarProperty Name="timeResult" ColumnName="timeResult" />
+          <ScalarProperty Name="dateResult" ColumnName="dateResult" />
+          <ScalarProperty Name="timeForTakingSample" ColumnName="timeForTakingSample" />
+          <ScalarProperty Name="dateForTakingSample" ColumnName="dateForTakingSample" />
+          <ScalarProperty Name="timeRequest" ColumnName="timeRequest" />
+          <ScalarProperty Name="dateRequest" ColumnName="dateRequest" />
+          <ScalarProperty Name="isFromHome" ColumnName="isFromHome" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="userIdDB" ColumnName="userIdDB" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestNames">
+      <EntityTypeMapping TypeName="CheckUpModel.TestName">
+        <MappingFragment StoreEntitySet="TestName">
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CheckUpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="buildingNo" Type="nvarchar(max)" />
+    <Property Name="floorNo" Type="nvarchar(max)" />
+    <Property Name="apartmentNo" Type="nvarchar(max)" />
+    <Property Name="longitude" Type="float" />
+    <Property Name="latitude" Type="float" />
+  </EntityType>
+  <EntityType Name="Govern">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Phone">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="number" Type="nvarchar(max)" />
+    <Property Name="isLand" Type="bit" />
+  </EntityType>
+  <EntityType Name="DieaseName">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="HealthProfileId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="HealthProfile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isSuffreDiabetes" Type="bit" />
+    <Property Name="isSuffrePressure" Type="bit" />
+    <Property Name="isSTakeantiBiotic" Type="bit" />
+    <Property Name="isTakehaemophilia" Type="bit" />
+    <Property Name="userId" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LabBranch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="password" Type="nvarchar(max)" />
+    <Property Name="govern" Type="nvarchar(max)" />
+    <Property Name="image" Type="nvarchar(max)" />
+    <Property Name="phone" Type="nvarchar(max)" />
+    <Property Name="isAvailableFromHome" Type="bit" />
+    <Property Name="timeFrom" Type="nvarchar(max)" />
+    <Property Name="timeTo" Type="nvarchar(max)" />
+    <Property Name="holidays" Type="nvarchar(max)" />
+    <Property Name="longitude" Type="float" />
+    <Property Name="latitude" Type="float" />
+    <Property Name="FireBaseId" Type="nvarchar(max)" />
+    <Property Name="LabId" Type="bigint" />
+    <Property Name="addressId" Type="bigint" />
+    <Property Name="rating" Type="int" />
+    <Property Name="reviewId" Type="bigint" />
+    <Property Name="governId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Laboratory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="formalReferencePathId" Type="nvarchar(max)" />
+    <Property Name="formalRefrencePathIdDB" Type="bigint" />
+    <Property Name="specialTests" Type="nvarchar(max)" />
+    <Property Name="image" Type="nvarchar(max)" />
+    <Property Name="branches" Type="nvarchar(max)" />
+    <Property Name="FireBaseId" Type="nvarchar(max)" />
+    <Property Name="hotline" Type="nvarchar(max)" />
+    <Property Name="rating" Type="int" />
+  </EntityType>
+  <EntityType Name="ResultFilespath">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="TestId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="rateNumber" Type="int" />
+    <Property Name="userId" Type="nvarchar(max)" />
+    <Property Name="UserIdDB" Type="bigint" />
+    <Property Name="LabBranchId" Type="bigint" />
+    <Property Name="createdDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RoushettaPath">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="TestId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="nvarchar(max)" />
+    <Property Name="userIdDB" Type="bigint" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="isFromHome" Type="bit" />
+    <Property Name="dateRequest" Type="nvarchar(max)" />
+    <Property Name="timeRequest" Type="nvarchar(max)" />
+    <Property Name="dateForTakingSample" Type="nvarchar(max)" />
+    <Property Name="timeForTakingSample" Type="nvarchar(max)" />
+    <Property Name="dateResult" Type="nvarchar(max)" />
+    <Property Name="timeResult" Type="nvarchar(max)" />
+    <Property Name="branchId" Type="nvarchar(max)" />
+    <Property Name="branchIdDB" Type="bigint" />
+    <Property Name="labId" Type="nvarchar(max)" />
+    <Property Name="labIdDB" Type="bigint" />
+    <Property Name="addressId" Type="bigint" />
+    <Property Name="hba1c" Type="nvarchar(max)" />
+    <Property Name="status" Type="nvarchar(max)" />
+    <Property Name="isNotified" Type="bit" />
+    <Property Name="totalCost" Type="nvarchar(max)" />
+    <Property Name="precautions" Type="nvarchar(max)" />
+    <Property Name="employeeId" Type="nvarchar(max)" />
+    <Property Name="radioReason" Type="nvarchar(max)" />
+    <Property Name="generatedCode" Type="nvarchar(max)" />
+    <Property Name="timeStampRequest" Type="bigint" />
+    <Property Name="refuseReason" Type="nvarchar(max)" />
+    <Property Name="dateRequestFormat" Type="datetime" />
+    <Property Name="isNotifiedLab" Type="bit" />
+  </EntityType>
+  <EntityType Name="TestName">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="TestId" Type="bigint" />
+  </EntityType>
+  <Association Name="FK_DieaseName_HealthProfile">
+    <End Role="HealthProfile" Type="Self.HealthProfile" Multiplicity="0..1" />
+    <End Role="DieaseName" Type="Self.DieaseName" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthProfile">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DieaseName">
+        <PropertyRef Name="HealthProfileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LabBranch_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="LabBranch" Type="Self.LabBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LabBranch">
+        <PropertyRef Name="addressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LabBranch_Govern">
+    <End Role="Govern" Type="Self.Govern" Multiplicity="0..1" />
+    <End Role="LabBranch" Type="Self.LabBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Govern">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LabBranch">
+        <PropertyRef Name="governId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LabBranch_Laboratory">
+    <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="0..1" />
+    <End Role="LabBranch" Type="Self.LabBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Laboratory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LabBranch">
+        <PropertyRef Name="LabId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ResultFilespath_Test">
+    <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+    <End Role="ResultFilespath" Type="Self.ResultFilespath" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ResultFilespath">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Review">
+    <End Role="LabBranch" Type="Self.LabBranch" Multiplicity="0..1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LabBranch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="LabBranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoushettaPath_Test">
+    <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+    <End Role="RoushettaPath" Type="Self.RoushettaPath" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoushettaPath">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_Address">
+    <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+    <End Role="Test" Type="Self.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="addressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_Laboratory">
+    <End Role="Laboratory" Type="Self.Laboratory" Multiplicity="0..1" />
+    <End Role="Test" Type="Self.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Laboratory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="labIdDB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestName_Test">
+    <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+    <End Role="TestName" Type="Self.TestName" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TestName">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CheckUpModelStoreContainer">
+    <EntitySet Name="Address" EntityType="Self.Address" Schema="General" store:Type="Tables" />
+    <EntitySet Name="Govern" EntityType="Self.Govern" Schema="General" store:Type="Tables" />
+    <EntitySet Name="Phone" EntityType="Self.Phone" Schema="General" store:Type="Tables" />
+    <EntitySet Name="DieaseName" EntityType="Self.DieaseName" Schema="lab" store:Type="Tables" />
+    <EntitySet Name="HealthProfile" EntityType="Self.HealthProfile" Schema="lab" store:Type="Tables" />
+    <EntitySet Name="LabBranch" EntityType="Self.LabBranch" Schema="lab" store:Type="Tables" />
+    <EntitySet Name="Laboratory" EntityType="Self.Laboratory" Schema="lab" store:Type="Tables" />
+    <EntitySet Name="ResultFilespath" EntityType="Self.ResultFilespath" Schema="lab" store:Type="Tables" />
+    <EntitySet Name="Review" EntityType="Self.Review" Schema="lab" store:Type="Tables" />
+    <EntitySet Name="RoushettaPath" EntityType="Self.RoushettaPath" Schema="lab" store:Type="Tables" />
+    <EntitySet Name="Test" EntityType="Self.Test" Schema="lab" store:Type="Tables" />
+    <EntitySet Name="TestName" EntityType="Self.TestName" Schema="lab" store:Type="Tables" />
+    <AssociationSet Name="FK_DieaseName_HealthProfile" Association="Self.FK_DieaseName_HealthProfile">
+      <End Role="HealthProfile" EntitySet="HealthProfile" />
+      <End Role="DieaseName" EntitySet="DieaseName" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LabBranch_Address" Association="Self.FK_LabBranch_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="LabBranch" EntitySet="LabBranch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LabBranch_Govern" Association="Self.FK_LabBranch_Govern">
+      <End Role="Govern" EntitySet="Govern" />
+      <End Role="LabBranch" EntitySet="LabBranch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LabBranch_Laboratory" Association="Self.FK_LabBranch_Laboratory">
+      <End Role="Laboratory" EntitySet="Laboratory" />
+      <End Role="LabBranch" EntitySet="LabBranch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ResultFilespath_Test" Association="Self.FK_ResultFilespath_Test">
+      <End Role="Test" EntitySet="Test" />
+      <End Role="ResultFilespath" EntitySet="ResultFilespath" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Review" Association="Self.FK_Review_Review">
+      <End Role="LabBranch" EntitySet="LabBranch" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoushettaPath_Test" Association="Self.FK_RoushettaPath_Test">
+      <End Role="Test" EntitySet="Test" />
+      <End Role="RoushettaPath" EntitySet="RoushettaPath" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_Address" Association="Self.FK_Test_Address">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Test" EntitySet="Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_Laboratory" Association="Self.FK_Test_Laboratory">
+      <End Role="Laboratory" EntitySet="Laboratory" />
+      <End Role="Test" EntitySet="Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestName_Test" Association="Self.FK_TestName_Test">
+      <End Role="Test" EntitySet="Test" />
+      <End Role="TestName" EntitySet="TestName" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

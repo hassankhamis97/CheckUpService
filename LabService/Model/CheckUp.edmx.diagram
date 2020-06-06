@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bbb069496e2448dda2c72618371fdf82" Name="Diagram1">
+        <EntityTypeShape EntityType="CheckUpModel.Address" Width="1.5" PointX="0.75" PointY="7.25" />
+        <EntityTypeShape EntityType="CheckUpModel.Govern" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CheckUpModel.Phone" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="CheckUpModel.DieaseName" Width="1.5" PointX="10" PointY="1.625" />
+        <EntityTypeShape EntityType="CheckUpModel.HealthProfile" Width="1.5" PointX="7.75" PointY="1.375" />
+        <EntityTypeShape EntityType="CheckUpModel.LabBranch" Width="1.5" PointX="6" PointY="6" />
+        <EntityTypeShape EntityType="CheckUpModel.Laboratory" Width="1.5" PointX="3.75" PointY="19.125" />
+        <EntityTypeShape EntityType="CheckUpModel.ResultFilespath" Width="1.5" PointX="5.25" PointY="3.125" />
+        <EntityTypeShape EntityType="CheckUpModel.Review" Width="1.5" PointX="8.25" PointY="7.25" />
+        <EntityTypeShape EntityType="CheckUpModel.RoushettaPath" Width="1.5" PointX="5.25" PointY="15.25" />
+        <EntityTypeShape EntityType="CheckUpModel.Test" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="CheckUpModel.TestName" Width="1.5" PointX="5.25" PointY="12.75" />
+        <AssociationConnector Association="CheckUpModel.FK_LabBranch_Address" />
+        <AssociationConnector Association="CheckUpModel.FK_Test_Address" />
+        <AssociationConnector Association="CheckUpModel.FK_LabBranch_Govern" />
+        <AssociationConnector Association="CheckUpModel.FK_DieaseName_HealthProfile" />
+        <AssociationConnector Association="CheckUpModel.FK_LabBranch_Laboratory" />
+        <AssociationConnector Association="CheckUpModel.FK_Review_Review" />
+        <AssociationConnector Association="CheckUpModel.FK_Test_Laboratory" />
+        <AssociationConnector Association="CheckUpModel.FK_ResultFilespath_Test" />
+        <AssociationConnector Association="CheckUpModel.FK_RoushettaPath_Test" />
+        <AssociationConnector Association="CheckUpModel.FK_TestName_Test" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

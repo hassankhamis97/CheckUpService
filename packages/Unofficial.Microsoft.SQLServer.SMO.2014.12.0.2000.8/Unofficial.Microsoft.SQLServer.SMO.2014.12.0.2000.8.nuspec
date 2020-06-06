@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Unofficial.Microsoft.SQLServer.SMO.2014</id>
+    <version>12.0.2000.8</version>
+    <title>Microsoft SQL Server 2014 Shared Management Objects</title>
+    <authors>Nils Lück</authors>
+    <owners>Nils Lück</owners>
+    <licenseUrl>http://www.microsoft.com/en-us/download/details.aspx?id=42295</licenseUrl>
+    <projectUrl>http://technet.microsoft.com/nl-NL/library/ms162189.aspx</projectUrl>
+    <iconUrl>https://api.nuget.org/v3-flatcontainer/unofficial.microsoft.sqlserver.smo.2014/12.0.2000.8/icon</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>DLLs for working with SQL Server 2014 Shared Management Objects (SMO). Inspired by the similar package for SMO 2012. 
+
+Included DLLs: Microsoft.SqlServer.ConnectionInfo.dll, Microsoft.SqlServer.ConnectionInfoExtended.dll, Microsoft.SqlServer.Management.Sdk.Sfc.dll, Microsoft.SqlServer.Smo.dll, Microsoft.SqlServer.SmoExtended.dll, Microsoft.SqlServer.SqlClrProvider.dll, Microsoft.SqlServer.SqlEnum.dll</description>
+    <summary>DLLs for working with SQL Server 2014 Shared Management Objects (SMO).</summary>
+    <copyright>Copyright 2014 Microsoft Corporation</copyright>
+    <language>en-US</language>
+    <dependencies>
+      <group targetFramework=".NETFramework4.0" />
+    </dependencies>
+  </metadata>
+</package>
