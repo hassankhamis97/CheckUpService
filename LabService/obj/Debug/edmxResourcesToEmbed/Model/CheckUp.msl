@@ -72,6 +72,7 @@
           <ScalarProperty Name="govern" ColumnName="govern" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

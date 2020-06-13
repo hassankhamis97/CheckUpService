@@ -29,7 +29,7 @@ namespace LabService.Model
         public string branches { get; set; }
         public string FireBaseId { get; set; }
         public string hotline { get; set; }
-        public Nullable<int> rating { get; set; }
+        public Nullable<double> rating { get; set; }
     
         public virtual ICollection<LabBranch> LabBranches { get; set; }
         public virtual ICollection<Test> Tests { get; set; }

@@ -146,12 +146,17 @@ namespace LabService.Controllers
         {
             return analysisManager.GetNotificationNumbers(userId);
         }
-
+        [HttpGet]
+        public int GetNewRequestNotification([FromUri] string branchId)
+        {
+            return analysisManager.GetNewRequestNotification(branchId);
+        }
         [HttpGet]
         public bool GetIsFirstDealWithBranch([FromUri] string userId, [FromUri] string branchId)
         {
             return analysisManager.GetIsFirstDealWithBranch(userId,branchId);
         }
+        
         [HttpGet]
         public bool UpdateNotifiedFalse([FromUri] long testId)
         {
@@ -184,6 +189,18 @@ namespace LabService.Controllers
         public HealthProfileModel RetrieveHealthProfile([FromUri] string userId)
         {
             return analysisManager.RetrieveHealthProfile(userId);
+        }
+
+        [HttpPost]
+        public Response addLab([FromBody] Laboratory laboratory)
+        {
+            return analysisManager.addLab(laboratory);
+        }
+
+        [HttpPost]
+        public Response addLabBranch([FromBody] LabBranchDB labBranch)
+        {
+            return analysisManager.addLabBranch(labBranch);
         }
 
     }

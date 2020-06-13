@@ -21,7 +21,7 @@ namespace LabService.Model
         public string branchId { get; set; }
         public string labId { get; set; }
         public string labName { get; set; }
-
+        public double ratingReviewNo { get; set; }
         public AddressModel address { get; set; }
     }
 }

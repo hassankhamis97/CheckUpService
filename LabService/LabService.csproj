@@ -126,6 +126,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BL\AnalysisManager.cs" />
     <Compile Include="Controllers\AnalysisServiceController.cs" />
+    <Compile Include="Controllers\LabController.cs" />
     <Compile Include="Enum\Enum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -166,6 +167,7 @@
     <Compile Include="Model\LabBranch.cs">
       <DependentUpon>CheckUp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\LabBranchDB.cs" />
     <Compile Include="Model\LabBranchFullModel.cs" />
     <Compile Include="Model\LabBranchMenu.cs" />
     <Compile Include="Model\LabBranchModel.cs" />

@@ -11,7 +11,7 @@ namespace LabService.Model
         public string hotline { get; set; }
         public string labPhoto { get; set; }
         public string labName { get; set; }
-        public int rating { get; set; }
+        public double rating { get; set; }
 
     }
 }

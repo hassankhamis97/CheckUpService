@@ -56,6 +56,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
           <Property Name="email" Type="nvarchar(max)" />
           <Property Name="password" Type="nvarchar(max)" />
           <Property Name="govern" Type="nvarchar(max)" />
@@ -70,7 +71,7 @@
           <Property Name="FireBaseId" Type="nvarchar(max)" />
           <Property Name="LabId" Type="bigint" />
           <Property Name="addressId" Type="bigint" />
-          <Property Name="rating" Type="int" />
+          <Property Name="rating" Type="float" />
           <Property Name="reviewId" Type="bigint" />
           <Property Name="governId" Type="bigint" />
         </EntityType>
@@ -87,7 +88,7 @@
           <Property Name="branches" Type="nvarchar(max)" />
           <Property Name="FireBaseId" Type="nvarchar(max)" />
           <Property Name="hotline" Type="nvarchar(max)" />
-          <Property Name="rating" Type="int" />
+          <Property Name="rating" Type="float" />
         </EntityType>
         <EntityType Name="ResultFilespath">
           <Key>
@@ -447,6 +448,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="govern" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -461,7 +463,7 @@
           <Property Name="FireBaseId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LabId" Type="Int64" />
           <Property Name="addressId" Type="Int64" />
-          <Property Name="rating" Type="Int32" />
+          <Property Name="rating" Type="Double" />
           <Property Name="reviewId" Type="Int64" />
           <Property Name="governId" Type="Int64" />
           <NavigationProperty Name="Address" Relationship="CheckUpModel.FK_LabBranch_Address" FromRole="LabBranch" ToRole="Address" />
@@ -482,7 +484,7 @@
           <Property Name="branches" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FireBaseId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="hotline" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="rating" Type="Int32" />
+          <Property Name="rating" Type="Double" />
           <NavigationProperty Name="LabBranches" Relationship="CheckUpModel.FK_LabBranch_Laboratory" FromRole="Laboratory" ToRole="LabBranch" />
           <NavigationProperty Name="Tests" Relationship="CheckUpModel.FK_Test_Laboratory" FromRole="Laboratory" ToRole="Test" />
         </EntityType>
@@ -762,6 +764,7 @@
                 <ScalarProperty Name="govern" ColumnName="govern" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

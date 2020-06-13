@@ -357,7 +357,9 @@ namespace LabService.BL
                     timeTo = s.timeTo,
                     labName = s.Laboratory != null ? s.Laboratory.name : string.Empty,
                     labId = s.Laboratory != null ? s.Laboratory.FireBaseId : string.Empty,
-                    address = MapToAddress(s.Address)
+                    address = MapToAddress(s.Address),
+                    holidays = s.holidays,
+                    ratingReviewNo = s.Reviews.Any() ? s.Reviews.Where(w => w.rateNumber.HasValue).Average(a => a.rateNumber ?? 0) : 0
                 }).FirstOrDefault();
             }
             catch (Exception ex)
@@ -478,6 +480,7 @@ namespace LabService.BL
                     testDb.employeeId = string.IsNullOrEmpty(test.employeeId) ? null : test.employeeId;
                     testDb.status = string.IsNullOrEmpty(test.status) ? null : test.status;
                     testDb.isNotified = true;
+                    testDb.isNotifiedLab = false;
 
                 }
                 checkUpContext.SaveChanges();
@@ -504,6 +507,7 @@ namespace LabService.BL
                     testDb.refuseReason = string.IsNullOrEmpty(test.refuseReason) ? null : test.refuseReason;
                     testDb.status = string.IsNullOrEmpty(test.status) ? null : test.status;
                     testDb.isNotified = true;
+                    testDb.isNotifiedLab = false;
 
                 }
                 checkUpContext.SaveChanges();
@@ -526,7 +530,9 @@ namespace LabService.BL
                 if (testDb != null)
                 {
                     testDb.status = string.IsNullOrEmpty(test.status) ? null : test.status;
-                    testDb.isNotified = true;
+                    if (testDb.status != "Canceled") { 
+                      testDb.isNotified = true;
+                    }
                 }
                 checkUpContext.SaveChanges();
             }
@@ -756,7 +762,23 @@ namespace LabService.BL
            
             return nofificationBadge;
         }
+        internal int GetNewRequestNotification(string branchId)
+        {
+            int count;
 
+            try
+            {
+                count = checkUpContext.Tests.Where(w => w.branchId == branchId && w.isNotifiedLab == true).Count();
+
+            }
+            catch (Exception ex)
+            {
+                count = 0;
+            }
+
+
+            return count;
+        }
         internal bool GetIsFirstDealWithBranch(string userId, string branchId)
         {
             bool isFound = true;
@@ -810,12 +832,18 @@ namespace LabService.BL
 
             try
             {
-                lst = checkUpContext.Tests.Where(w => w.employeeId == employeeId).Select(s =>
+                lst = checkUpContext.Tests.Where(w => w.employeeId == employeeId).ToList()
+                    
+                    .Select(s =>
 
                     new UserTest() {
                       TestId = s.Id,
-                      UserId = s.userId
-                    }).ToList();
+                      UserId = s.userId,
+                      dateForTakingSample = s.dateForTakingSample,
+                      timeForTakingSample = s.timeForTakingSample,
+                      generatedCode = s.generatedCode,
+                      address = s.Address != null ? MapToAddress(s.Address) : new AddressModel()
+                    }).OrderBy(o => o.TakingSampleDate).ToList();
             }
             catch (Exception ex)
             {
@@ -904,6 +932,56 @@ namespace LabService.BL
                 healthProfile = null;
             }
             return healthProfile;
+        }
+
+        internal Response addLab(Laboratory laboratory)
+        {
+            Response response = Response.Success;
+
+            try
+            {
+                checkUpContext.Laboratories.Add(laboratory);
+                checkUpContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                response = Response.Fail;
+            }
+            return response;
+        }
+
+        internal Response addLabBranch(LabBranchDB labBranch)
+        {
+            Response response = Response.Success;
+
+            try
+            {
+                LabBranch labBranchDb = new LabBranch();
+                labBranchDb.email = labBranch.email;
+                labBranchDb.password = labBranch.password;
+                labBranchDb.govern = labBranch.govern;
+                labBranchDb.image = labBranch.image;
+                labBranchDb.phone = labBranch.phone;
+                labBranchDb.isAvailableFromHome = labBranch.isAvailableFromHome;
+                labBranchDb.timeFrom = labBranch.timeFrom;
+                labBranchDb.timeTo = labBranch.timeTo;
+                labBranchDb.holidays = labBranch.holidays;
+                labBranchDb.longitude = labBranch.longitude;
+                labBranchDb.latitude = labBranch.latitude;
+                labBranchDb.FireBaseId = labBranch.FireBaseId;
+                labBranchDb.LabId = labBranch.LabId;
+                labBranchDb.rating = labBranch.rating;
+                labBranchDb.reviewId = labBranch.reviewId;
+                labBranchDb.governId = labBranch.governId;
+                labBranchDb.Address = labBranch.address;
+                checkUpContext.LabBranches.Add(labBranchDb);
+                checkUpContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                response = Response.Fail;
+            }
+            return response;
         }
     }
 

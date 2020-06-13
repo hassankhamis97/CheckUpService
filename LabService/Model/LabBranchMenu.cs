@@ -13,7 +13,7 @@ namespace LabService.Model
         public string idFB { get; set; }
         public string govern { get; set; }
         public AddressModel address { get; set; }
-        public int rating { get; set; }
+        public double rating { get; set; }
         public bool isAvailableFromHome { get; set; }
         public double distance
         {

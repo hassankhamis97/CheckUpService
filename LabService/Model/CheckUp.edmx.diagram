@@ -5,18 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bbb069496e2448dda2c72618371fdf82" Name="Diagram1">
-        <EntityTypeShape EntityType="CheckUpModel.Address" Width="1.5" PointX="0.75" PointY="7.25" />
-        <EntityTypeShape EntityType="CheckUpModel.Govern" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="CheckUpModel.Phone" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="CheckUpModel.DieaseName" Width="1.5" PointX="10" PointY="1.625" />
-        <EntityTypeShape EntityType="CheckUpModel.HealthProfile" Width="1.5" PointX="7.75" PointY="1.375" />
-        <EntityTypeShape EntityType="CheckUpModel.LabBranch" Width="1.5" PointX="6" PointY="6" />
-        <EntityTypeShape EntityType="CheckUpModel.Laboratory" Width="1.5" PointX="3.75" PointY="19.125" />
-        <EntityTypeShape EntityType="CheckUpModel.ResultFilespath" Width="1.5" PointX="5.25" PointY="3.125" />
-        <EntityTypeShape EntityType="CheckUpModel.Review" Width="1.5" PointX="8.25" PointY="7.25" />
-        <EntityTypeShape EntityType="CheckUpModel.RoushettaPath" Width="1.5" PointX="5.25" PointY="15.25" />
-        <EntityTypeShape EntityType="CheckUpModel.Test" Width="1.5" PointX="3" PointY="4.875" />
-        <EntityTypeShape EntityType="CheckUpModel.TestName" Width="1.5" PointX="5.25" PointY="12.75" />
+        <EntityTypeShape EntityType="CheckUpModel.Address" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="CheckUpModel.Govern" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CheckUpModel.Phone" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CheckUpModel.DieaseName" Width="1.5" PointX="5" PointY="1.25" />
+        <EntityTypeShape EntityType="CheckUpModel.HealthProfile" Width="1.5" PointX="2.75" PointY="1" />
+        <EntityTypeShape EntityType="CheckUpModel.LabBranch" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="CheckUpModel.Laboratory" Width="1.5" PointX="0.75" PointY="6.625" />
+        <EntityTypeShape EntityType="CheckUpModel.ResultFilespath" Width="1.5" PointX="8.25" PointY="4.875" />
+        <EntityTypeShape EntityType="CheckUpModel.Review" Width="1.5" PointX="5.25" PointY="12.875" />
+        <EntityTypeShape EntityType="CheckUpModel.RoushettaPath" Width="1.5" PointX="8.25" PointY="9.875" />
+        <EntityTypeShape EntityType="CheckUpModel.Test" Width="1.5" PointX="6" PointY="4.625" />
+        <EntityTypeShape EntityType="CheckUpModel.TestName" Width="1.5" PointX="8.25" PointY="7.375" />
         <AssociationConnector Association="CheckUpModel.FK_LabBranch_Address" />
         <AssociationConnector Association="CheckUpModel.FK_Test_Address" />
         <AssociationConnector Association="CheckUpModel.FK_LabBranch_Govern" />

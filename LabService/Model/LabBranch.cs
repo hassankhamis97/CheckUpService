@@ -20,6 +20,7 @@ namespace LabService.Model
         }
     
         public long Id { get; set; }
+        public string name { get; set; }
         public string email { get; set; }
         public string password { get; set; }
         public string govern { get; set; }
@@ -34,7 +35,7 @@ namespace LabService.Model
         public string FireBaseId { get; set; }
         public Nullable<long> LabId { get; set; }
         public Nullable<long> addressId { get; set; }
-        public Nullable<int> rating { get; set; }
+        public Nullable<double> rating { get; set; }
         public Nullable<long> reviewId { get; set; }
         public Nullable<long> governId { get; set; }
     
